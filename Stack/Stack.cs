@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Stack
 {
@@ -45,6 +46,21 @@ namespace Stack
         public void Clear()
         {
             _top = -1;
+        }
+        
+        public bool Contains(TType item)
+        {
+            var index = Array.IndexOf(_array, item);
+
+            return index != -1 && index <= _top;
+        }
+
+        public TType[] ToArray()
+        {
+            if (IsEmpty())
+                return new TType[] { };
+
+            return _array.Take(Count).ToArray();
         }
     }
 }
