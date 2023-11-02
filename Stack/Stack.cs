@@ -41,5 +41,10 @@ namespace Stack
 
             return _array[_top--];
         }
+        
+        public void Clear()
+        {
+            _top = -1;
+        }
     }
 }
