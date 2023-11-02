@@ -8,7 +8,6 @@
         private int _top = -1;
         private readonly TType[] _array;
 
-
         public Stack() : this(DefaultMaxSize)
         {
         }
@@ -18,5 +17,9 @@
             _maxSize = maxSize;
             _array = new TType[maxSize];
         }
+        
+        public bool IsEmpty() => _top == -1;
+
+        public bool IsFull() => _top == _maxSize - 1;
     }
 }
