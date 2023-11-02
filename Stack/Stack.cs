@@ -8,6 +8,8 @@
         private int _top = -1;
         private readonly TType[] _array;
 
+        public int Count => IsEmpty() ? 0 : _top + 1;
+        
         public Stack() : this(DefaultMaxSize)
         {
         }
