@@ -1,4 +1,6 @@
-﻿namespace Stack
+﻿using System;
+
+namespace Stack
 {
     public class Stack<TType>
     {
@@ -9,7 +11,7 @@
         private readonly TType[] _array;
 
         public int Count => IsEmpty() ? 0 : _top + 1;
-        
+
         public Stack() : this(DefaultMaxSize)
         {
         }
@@ -19,9 +21,25 @@
             _maxSize = maxSize;
             _array = new TType[maxSize];
         }
-        
+
         public bool IsEmpty() => _top == -1;
 
         public bool IsFull() => _top == _maxSize - 1;
+
+        public void Push(TType item)
+        {
+            if (IsFull())
+                throw new StackOverflowException();
+
+            _array[++_top] = item;
+        }
+
+        public TType Pop()
+        {
+            if (IsEmpty())
+                throw new StackEmptyException();
+
+            return _array[_top--];
+        }
     }
 }
