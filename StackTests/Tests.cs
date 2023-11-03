@@ -29,7 +29,7 @@ namespace StackTests
 
             Assert.AreEqual(_stack.Count, MaxSize);
         }
-        
+
         [Test]
         public void IsEmptyTest()
         {
@@ -46,8 +46,16 @@ namespace StackTests
             {
                 _stack.Push(i);
             }
-            
+
             Assert.AreEqual(_stack.IsFull(), true);
+        }
+
+        [Test]
+        public void PushPopTest()
+        {
+            var item = 5;
+            _stack.Push(item);
+            Assert.AreEqual(_stack.Pop(), item);
         }
     }
 }
