@@ -124,8 +124,7 @@ namespace StackTests
             {
                 _stack.Push(i);
 
-                if (callback != null)
-                    callback(i);
+                callback?.Invoke(i);
             }
         }
     }
