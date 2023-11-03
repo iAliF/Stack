@@ -70,5 +70,21 @@ namespace StackTests
             _stack.Clear();
             Assert.AreEqual(_stack.Count, 0);
         }
+
+        [Test]
+        public void ContainsTest()
+        {
+            _stack.Push(1);
+            Assert.IsTrue(_stack.Contains(1));
+
+            _stack.Push(2);
+            Assert.IsTrue(_stack.Contains(2));
+
+            _stack.Pop();
+            Assert.IsFalse(_stack.Contains(2));
+
+            _stack.Pop();
+            Assert.IsFalse(_stack.Contains(1));
+        }
     }
 }
