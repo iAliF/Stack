@@ -94,6 +94,25 @@ namespace StackTests
             Assert.AreEqual(_stack.ToArray(), new int[] { });
         }
 
+        [Test]
+        public void StackOverFlowTest()
+        {
+            PushToArray(MaxSize);
+            Assert.Throws<StackOverflowException>(() =>
+            {
+                _stack.Push(11);
+            });
+        }
+        
+        [Test]
+        public void StackEmptyTest()
+        {
+            Assert.Throws<StackEmptyException>(() =>
+            {
+                _stack.Pop();
+            });
+        }
+        
         private void PushToArray(int size, Action<int> callback = null)
         {
             /*
