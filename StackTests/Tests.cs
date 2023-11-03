@@ -21,11 +21,10 @@ namespace StackTests
         {
             Assert.AreEqual(_stack.Count, 0);
 
-            for (int i = 1; i <= MaxSize; i++)
-            {
-                _stack.Push(i);
-                Assert.AreEqual(_stack.Count, i);
-            }
+            PushToArray(
+                MaxSize,
+                i => Assert.AreEqual(_stack.Count, i)
+            );
 
             Assert.AreEqual(_stack.Count, MaxSize);
         }
@@ -42,10 +41,7 @@ namespace StackTests
         [Test]
         public void IsFullTest()
         {
-            for (int i = 1; i <= MaxSize; i++)
-            {
-                _stack.Push(i);
-            }
+            PushToArray(MaxSize);
 
             Assert.AreEqual(_stack.IsFull(), true);
         }
@@ -61,12 +57,9 @@ namespace StackTests
         [Test]
         public void ClearTest()
         {
-            for (int i = 1; i <= MaxSize; i++)
-            {
-                _stack.Push(i);
-            }
-
+            PushToArray(MaxSize);
             Assert.AreEqual(_stack.Count, MaxSize);
+
             _stack.Clear();
             Assert.AreEqual(_stack.Count, 0);
         }
@@ -92,13 +85,9 @@ namespace StackTests
         {
             var array = new[] { 1, 2, 3, 4, 5 };
 
-            for (int i = 1; i <= 6; i++)
-            {
-                _stack.Push(i);
-            }
+            PushToArray(6);
 
             _stack.Pop();
-
             Assert.AreEqual(_stack.ToArray(), array);
 
             _stack.Clear();
