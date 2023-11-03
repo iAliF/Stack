@@ -104,5 +104,21 @@ namespace StackTests
             _stack.Clear();
             Assert.AreEqual(_stack.ToArray(), new int[] { });
         }
+
+        private void PushToArray(int size, Action<int> callback = null)
+        {
+            /*
+             * Fills array with *size* numbers
+             * callback will be called after each item has been pushed to stack with the index parameter
+             */
+
+            for (var i = 1; i <= size; i++)
+            {
+                _stack.Push(i);
+
+                if (callback != null)
+                    callback(i);
+            }
+        }
     }
 }
