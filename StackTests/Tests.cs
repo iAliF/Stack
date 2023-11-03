@@ -86,5 +86,23 @@ namespace StackTests
             _stack.Pop();
             Assert.IsFalse(_stack.Contains(1));
         }
+
+        [Test]
+        public void ToArrayTest()
+        {
+            var array = new[] { 1, 2, 3, 4, 5 };
+
+            for (int i = 1; i <= 6; i++)
+            {
+                _stack.Push(i);
+            }
+
+            _stack.Pop();
+
+            Assert.AreEqual(_stack.ToArray(), array);
+
+            _stack.Clear();
+            Assert.AreEqual(_stack.ToArray(), new int[] { });
+        }
     }
 }
