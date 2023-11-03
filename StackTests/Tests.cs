@@ -38,5 +38,16 @@ namespace StackTests
             _stack.Pop();
             Assert.IsTrue(_stack.IsEmpty());
         }
+
+        [Test]
+        public void IsFullTest()
+        {
+            for (int i = 1; i <= MaxSize; i++)
+            {
+                _stack.Push(i);
+            }
+            
+            Assert.AreEqual(_stack.IsFull(), true);
+        }
     }
 }
