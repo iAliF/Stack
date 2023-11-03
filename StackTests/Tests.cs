@@ -57,5 +57,18 @@ namespace StackTests
             _stack.Push(item);
             Assert.AreEqual(_stack.Pop(), item);
         }
+
+        [Test]
+        public void ClearTest()
+        {
+            for (int i = 1; i <= MaxSize; i++)
+            {
+                _stack.Push(i);
+            }
+
+            Assert.AreEqual(_stack.Count, MaxSize);
+            _stack.Clear();
+            Assert.AreEqual(_stack.Count, 0);
+        }
     }
 }
