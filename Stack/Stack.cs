@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Linq;
 
+
 namespace Stack
 {
     public class Stack<TType>
     {
         private const int DefaultMaxSize = 100;
+        private readonly TType[] _array;
 
         private readonly int _maxSize;
         private int _top = -1;
-        private readonly TType[] _array;
-
-        public int Count => IsEmpty() ? 0 : _top + 1;
 
         public Stack() : this(DefaultMaxSize)
         {
@@ -23,9 +22,17 @@ namespace Stack
             _array = new TType[maxSize];
         }
 
-        public bool IsEmpty() => _top == -1;
+        public int Count => IsEmpty() ? 0 : _top + 1;
 
-        public bool IsFull() => _top == _maxSize - 1;
+        public bool IsEmpty()
+        {
+            return _top == -1;
+        }
+
+        public bool IsFull()
+        {
+            return _top == _maxSize - 1;
+        }
 
         public void Push(TType item)
         {
@@ -42,12 +49,12 @@ namespace Stack
 
             return _array[_top--];
         }
-        
+
         public void Clear()
         {
             _top = -1;
         }
-        
+
         public bool Contains(TType item)
         {
             var index = Array.IndexOf(_array, item);
@@ -57,10 +64,7 @@ namespace Stack
 
         public TType[] ToArray()
         {
-            if (IsEmpty())
-                return new TType[] { };
-
-            return _array.Take(Count).ToArray();
+            return IsEmpty() ? new TType[] { } : _array.Take(Count).ToArray();
         }
     }
 }
